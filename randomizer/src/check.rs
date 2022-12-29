@@ -1,8 +1,9 @@
 use crate::{FillerItem, LocationInfo};
 use crate::logic::Logic;
 use crate::progress::Progress;
+use serde::{Deserialize, Serialize};
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Serialize)]
 pub struct Check {
     name: &'static str,
     logic: Logic,

@@ -1,4 +1,4 @@
-use std::{collections::BTreeMap, error::Error as StdError, fs, fs::File, io};
+use std::{collections::BTreeMap, collections::HashMap, error::Error as StdError, fs, fs::File, io};
 use std::io::{stdin, stdout, Write};
 use std::path::Path;
 
@@ -14,6 +14,8 @@ pub use settings::Settings;
 use state::State;
 use sys::{Paths, System};
 
+use crate::location::Location;
+use crate::location_node::LocationNode;
 use crate::filler::fill_stuff;
 use crate::filler_item::{convert, FillerItem};
 use crate::patch::msbf::MsbfKey;
@@ -122,7 +124,7 @@ pub struct Hash(u32);
 
 pub(crate) type Condition = for<'state> fn(&'state State) -> bool;
 
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Hash, Serialize)]
 pub struct LocationInfo {
     subregion: &'static Subregion,
     name: &'static str,
@@ -1029,6 +1031,12 @@ pub fn plando() -> Result<(), Error> {
         true,
         true,
     )
+}
+
+pub fn build_world_graph() {
+    let graph = crate::world::build_world_graph();
+    
+    serde_json::to_writer_pretty(File::create("snasen.json").unwrap(), &graph);
 }
 
 pub fn filler_new(settings: &Settings, seed: Seed) -> Spoiler {

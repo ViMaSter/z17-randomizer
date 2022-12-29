@@ -1,7 +1,8 @@
 use crate::check::Check;
 use crate::path::Path;
+use serde::{Deserialize, Serialize};
 
-#[derive(Clone)]
+#[derive(Clone, Serialize)]
 pub struct LocationNode {
     checks: Vec<Check>,
     paths: Vec<Path>,

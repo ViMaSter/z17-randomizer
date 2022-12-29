@@ -1,8 +1,9 @@
 use crate::location::Location;
 use crate::logic::Logic;
 use crate::progress::Progress;
+use serde::{Deserialize, Serialize};
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Serialize)]
 pub struct Path {
     destination: Location,
     logic: Logic,

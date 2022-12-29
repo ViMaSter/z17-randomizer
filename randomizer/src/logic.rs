@@ -1,14 +1,31 @@
 use crate::logic_mode::LogicMode::*;
 use crate::progress::Progress;
+use serde::{Deserialize, Serialize, Serializer};
 
 // TODO I'd eventually like to externalize the logic, both for organization purposes and to allow users to write custom logic. But this is fine for now.
 
-#[derive(Copy, Clone)]
+pub fn serialize_foo_option<S>(
+    maybe_foo: &Option<fn(&Progress) -> bool>,
+    serializer: S,
+) -> Result<S::Ok, S::Error>
+where
+    S: Serializer,
+{
+    serializer.serialize_str("string")
+}
+
+#[derive(Copy, Clone, Serialize)]
 pub struct Logic {
+
+    #[serde(serialize_with = "serialize_foo_option")]
     pub normal: Option<fn(&Progress) -> bool>,
+    #[serde(serialize_with = "serialize_foo_option")]
     pub hard: Option<fn(&Progress) -> bool>,
+    #[serde(serialize_with = "serialize_foo_option")]
     pub glitch_basic: Option<fn(&Progress) -> bool>,
+    #[serde(serialize_with = "serialize_foo_option")]
     pub glitch_advanced: Option<fn(&Progress) -> bool>,
+    #[serde(serialize_with = "serialize_foo_option")]
     pub glitch_hell: Option<fn(&Progress) -> bool>,
 }
 

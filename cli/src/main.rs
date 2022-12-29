@@ -4,7 +4,7 @@ use std::path::Path;
 use std::str::FromStr;
 use log::{error, info};
 
-use randomizer::{Seed, Settings, plando, filler_new};
+use randomizer::{Seed, Settings, plando, filler_new, build_world_graph};
 use simplelog::{LevelFilter, SimpleLogger};
 use structopt::StructOpt;
 use albw::Game;
@@ -194,6 +194,8 @@ fn pause() {
 
 fn main() -> randomizer::Result<()> {
     let opt = Opt::from_args();
+
+    build_world_graph();
 
     SimpleLogger::init(LevelFilter::Info, Default::default()).expect("Could not initialize logger.");
 

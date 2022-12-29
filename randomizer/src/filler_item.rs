@@ -1,8 +1,9 @@
 use albw::Item;
 use albw::Item::*;
 use FillerItem::*;
+use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Serialize)]
 pub enum FillerItem {
     Empty,
 

@@ -2,7 +2,9 @@ use std::{
     fmt::{self, Debug, Formatter},
     hash::{Hash, Hasher},
 };
+use serde::{Deserialize, Serialize};
 
+#[derive(Serialize)]
 pub struct Subregion {
     name: &'static str,
     world: World,
@@ -45,7 +47,7 @@ impl Hash for Subregion {
     }
 }
 
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Hash, Serialize)]
 pub enum World {
     Hyrule,
     Lorule,
