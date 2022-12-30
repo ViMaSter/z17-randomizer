@@ -31,7 +31,7 @@ mod location;
 mod location_node;
 mod path;
 mod progress;
-mod world;
+pub mod world;
 mod filler;
 mod logic;
 pub mod logic_mode;
