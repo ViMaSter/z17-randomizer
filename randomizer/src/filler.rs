@@ -174,7 +174,7 @@ fn map_to_result(world_graph: HashMap<Location, LocationNode>, check_map: HashMa
     result
 }
 
-fn get_items(settings: &Settings, rng: &mut StdRng) -> (Vec<FillerItem>, Vec<FillerItem>) {
+pub fn get_items(settings: &Settings, rng: &mut StdRng) -> (Vec<FillerItem>, Vec<FillerItem>) {
     let mut progression =
         vec![
             Bow01,
@@ -654,7 +654,7 @@ fn exist_empty_reachable_check(checks: &Vec<Check>, check_map: &HashMap<&str, Op
 }
 
 /// Prefills a map with all checks as defined by the world graph with no values yet assigned
-fn prefill_check_map(world_graph: &mut HashMap<Location, LocationNode>) -> HashMap<&'static str, Option<FillerItem>> {
+pub fn prefill_check_map(world_graph: &mut HashMap<Location, LocationNode>) -> HashMap<&'static str, Option<FillerItem>> {
     let mut check_map = HashMap::new();
 
     for (_, location_node) in world_graph {
@@ -797,7 +797,7 @@ fn assumed_fill(mut world_graph: &mut HashMap<Location, LocationNode>,
     }
 }
 
-fn assumed_search(loc_map: &mut HashMap<Location, LocationNode>,
+pub fn assumed_search(loc_map: &mut HashMap<Location, LocationNode>,
                   items_owned: &Vec<FillerItem>,
                   mut check_map: &mut HashMap<&str, Option<FillerItem>>,
                   settings: &Settings) -> Vec<Check> {

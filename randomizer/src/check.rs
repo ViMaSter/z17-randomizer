@@ -4,7 +4,7 @@ use crate::progress::Progress;
 
 #[derive(Copy, Clone)]
 pub struct Check {
-    name: &'static str,
+    pub name: &'static str,
     logic: Logic,
     quest: Option<FillerItem>,
     location_info: Option<LocationInfo>,

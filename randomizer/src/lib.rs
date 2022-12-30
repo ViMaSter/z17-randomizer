@@ -32,7 +32,7 @@ mod location_node;
 mod path;
 mod progress;
 pub mod world;
-mod filler;
+pub mod filler;
 mod logic;
 pub mod logic_mode;
 
