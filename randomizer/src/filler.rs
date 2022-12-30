@@ -174,7 +174,7 @@ fn map_to_result(world_graph: HashMap<Location, LocationNode>, check_map: HashMa
     result
 }
 
-pub fn get_items(settings: &Settings, rng: &mut StdRng) -> (Vec<FillerItem>, Vec<FillerItem>) {
+fn get_items(settings: &Settings, rng: &mut StdRng) -> (Vec<FillerItem>, Vec<FillerItem>) {
     let mut progression =
         vec![
             Bow01,

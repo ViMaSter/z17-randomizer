@@ -24,7 +24,7 @@ mod regions;
 pub mod settings;
 mod state;
 mod check;
-mod filler_item;
+pub mod filler_item;
 mod loading_zone;
 mod loading_zone_pair;
 mod location;
